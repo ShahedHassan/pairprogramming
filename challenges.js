@@ -57,7 +57,20 @@ checkPrime([10, 18, 19, 29, 33, 35, 47, 66, 83]);
 // Example 2:
 // Input: vowelChecker(‘a’)
 // Output: ‘This is a vowel’
-
+function vowelChecker(x) {
+  if (x === "a" || x === "i" || x === "u" || x === "e" || x === "o") {
+    console.log(`${x} is a vowel`);
+  } else if (x === "A" || x === "I" || x === "U" || x === "E" || x === "O") {
+    console.log(`${x} is a vowel`);
+  } else {
+    console.log(`${x} is not a vowel`);
+  }
+}
+vowelChecker("r");
+vowelChecker("e");
+vowelChecker("d");
+vowelChecker("o");
+vowelChecker("x");
 // MEDIUM(2)
 // Create a function that accepts two strings, then determines whether or not the first string is an anagram of the
 // second string by returning a boolean.
@@ -68,6 +81,21 @@ checkPrime([10, 18, 19, 29, 33, 35, 47, 66, 83]);
 // Input: String 1: Things are good
 // String 2: Dogs eat ants
 // Output: False
+function isAnagram(str1, str2) {
+  let bool;
+  var s1 = str1.split("").sort().join("");
+  var s2 = str2.split("").sort().join("");
+  if (str1.length !== str2.length) {
+    bool = false;
+    return bool;
+  } else if (s1 === s2) {
+    bool = true;
+    return bool;
+  }
+}
+
+console.log(isAnagram("sodarktheconofman", "madonnaoftherocks"));
+console.log(isAnagram("Things are good", "Dogs eat ants"));
 
 // MEDIUM(3)
 // Write a function that takes in two numbers and determines the largest positive integer that divides the two
@@ -78,7 +106,20 @@ checkPrime([10, 18, 19, 29, 33, 35, 47, 66, 83]);
 // Example 2:
 // Input: gdc_two_numbers(78,126)
 // Output: 6
+function gcd_two_numbers(number1, number2) {
+  if (typeof number1 !== "number" || typeof number2 !== "number") return false;
+  number1 = Math.abs(number1);
+  number2 = Math.abs(number2);
+  while (number2) {
+    var t = number2;
+    number2 = number1 % number2;
+    number1 = t;
+  }
+  return number1;
+}
 
+console.log(gcd_two_numbers(336, 360));
+console.log(gcd_two_numbers(78, 126));
 // Medium(4)
 // Create a car object with the items: Make, Model, Year, Milage, and Color. Then create 3 methods in the object;
 // A driveToWorkmethod, driveAroundTheWorldmethod, and runErrandsmethod. Each of these methods
@@ -97,6 +138,28 @@ checkPrime([10, 18, 19, 29, 33, 35, 47, 66, 83]);
 // Example 2:
 // car.runErrands();
 // Output: old mileage: 26033 | new mileagea: 26063
+const car = {
+  make: "Hyundai",
+  model: "Santafe",
+  year: 2014,
+  Mileage: 2000,
+  color: "Silver",
+  driveToWorkmethod: function () {
+    this.Mileage += 33;
+    console.log(this.Mileage);
+  },
+  driveAroundTheWorldmethod: function () {
+    this.Mileage += 24000;
+    console.log(this.Mileage);
+  },
+  runErrandsmethod: function () {
+    this.Mileage += 30;
+    console.log(this.Mileage);
+  },
+};
+car.driveToWorkmethod();
+car.driveAroundTheWorldmethod();
+car.runErrandsmethod();
 
 // Hard(1)
 // Write a function that takes in a string and returns a boolean value whether or not the string contains a pair of
