@@ -5,26 +5,28 @@
 // Input: [2, 4, 7, 11, 15, 16]
 // Output: Even numbers: [2, 4, 16]
 // Odd Numbers: [7, 11, 15]
+
+
 function oddEven(arr){
     let odd = [];
     let even = [];
     for(let i = 0; i < arr.length; i++) {
         if(arr[i] % 2 === 0){
             even[i]= arr[i];
-            console.log(even);
+        
         }else{
             odd[i]= arr[i];
-            console.log(odd);
+    
         }
     }
+    console.log(even);
+    console.log(odd);
 }
 oddEven([2, 4, 7, 11, 15, 16]);
 
 
-
-
 // EASY(2)
-// Create a function that checks an array for prime numbers then inserts any pimes into a new array.
+// Create a function that checks an array for prime numbers then inserts any primes into a new array.
 // Example 1:
 // Input: numArray = [1,2,3,4,5,6,7,8,9,10]
 // Output: primeArray = [2,3,5,7]
@@ -95,4 +97,45 @@ oddEven([2, 4, 7, 11, 15, 16]);
 // Output: True
 // Example 2:
 // Input: str = “{hello world]” brackets(srt)
-// Output: False
+// Output: False  
+
+function areBracketsMatched (str) {
+	let stack = [];
+	for (let i = 0; i < str.length; i++ ){
+		let x = str[i];
+        if (x == '(' || x == '[' || x == '{'){
+            stack.push(x);
+			continue;
+		}
+		if (stack.length == 0)
+			return false;
+			
+		let check;
+		switch (x){
+		case ')':
+			check = stack.pop();
+			if (check == '{' || check == '[')
+				return false;
+			break;
+
+		case '}':
+			check = stack.pop();
+			if (check == '(' || check == '[')
+				return false;
+			break;
+
+		case ']':
+			check = stack.pop();
+			if (check == '(' || check == '{')
+				return false;
+			break;
+		}
+	}
+
+	return (stack.length == 0);
+}
+let str = `{hello world]`;
+if (areBracketsMatched(str))
+	console.log(`True`);
+else
+	console.log(`False`);
